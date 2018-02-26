@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-var square = function square(x) {
-    return x * x;
+var multiplier = {
+    numbers: [10, 20, 30],
+    multilplyBy: 3,
+    multiply: function multiply() {
+        var _this = this;
+
+        return this.numbers.map(function (number) {
+            return number * _this.multilplyBy;
+        });
+    }
 };
 
-// 
-var squareArrow = function squareArrow(x) {
-    return x * x;
-};
-
-// console.log(square(8));
-// console.log(squareArrow(9));
-
-var firstName = function firstName(x) {
-    return x.split(' ')[0];
-};
-console.log(firstName('Andrew Mead'));
+console.log(multiplier.multiply());
