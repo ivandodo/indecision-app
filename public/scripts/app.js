@@ -44,10 +44,6 @@ var template = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-var userName = 'Mike';
-var userAge = 33;
-var userLocation = 'Belgrade';
-
 var user = {
     name: 'Ivan',
     age: 33,

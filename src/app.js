@@ -1,12 +1,12 @@
 console.log('App.js is running');
 
-var app = {
+let app = {
     title:'Indecision app',
     subtitle:'Put your life in the hands of a computer',
     options:['One','Two']
 };
 
-var template = (
+let template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <p>{app.subtitle}</p>}
@@ -18,13 +18,9 @@ var template = (
     </div>
 );
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
-var userName = 'Mike';
-var userAge = 33;
-var userLocation  = 'Belgrade';
-
-var user = {
+let user = {
     name: 'Ivan',
     age: 33,
     location: 'Belgrade'
@@ -34,7 +30,7 @@ function getLocation(location){
     return location ? <p>Location: {location}</p> : undefined;
 }
 
-var template2 = (
+const template2 = (
     <div>
         <h1>{user.name ? user.name : 'Anonimous'}</h1>
         {(user.age && user.age >= 18) && <p>Age : {user.age}</p>}
