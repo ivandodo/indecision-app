@@ -8,47 +8,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_React$Component) {
-    _inherits(Counter, _React$Component);
+var Visible = function (_React$Component) {
+    _inherits(Visible, _React$Component);
 
-    function Counter(props) {
-        _classCallCheck(this, Counter);
+    function Visible(props) {
+        _classCallCheck(this, Visible);
 
-        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Visible.__proto__ || Object.getPrototypeOf(Visible)).call(this, props));
 
-        _this.addOne = _this.addOne.bind(_this);
-        _this.minusOne = _this.minusOne.bind(_this);
-        _this.reset = _this.reset.bind(_this);
+        _this.changeVisibility = _this.changeVisibility.bind(_this);
         _this.state = {
-            count: 0
+            visible: false
         };
         return _this;
     }
 
-    _createClass(Counter, [{
-        key: 'addOne',
-        value: function addOne() {
+    _createClass(Visible, [{
+        key: 'changeVisibility',
+        value: function changeVisibility() {
             this.setState(function (prevState) {
                 return {
-                    count: prevState.count + 1
-                };
-            });
-        }
-    }, {
-        key: 'minusOne',
-        value: function minusOne() {
-            this.setState(function (prevState) {
-                return {
-                    count: prevState.count - 1
-                };
-            });
-        }
-    }, {
-        key: 'reset',
-        value: function reset() {
-            this.setState(function () {
-                return {
-                    count: 0
+                    visible: !prevState.visible
                 };
             });
         }
@@ -61,60 +41,49 @@ var Counter = function (_React$Component) {
                 React.createElement(
                     'h1',
                     null,
-                    'Count: ',
-                    this.state.count
+                    'Visibility'
                 ),
                 React.createElement(
                     'button',
-                    { onClick: this.addOne },
-                    '+1'
+                    { onClick: this.changeVisibility },
+                    this.state.visible ? 'Hide details' : 'Show details'
                 ),
-                React.createElement(
-                    'button',
-                    { onClick: this.minusOne },
-                    '-1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.reset },
-                    'reset'
+                this.state.visible && React.createElement(
+                    'p',
+                    null,
+                    'Here are the details'
                 )
             );
         }
     }]);
 
-    return Counter;
+    return Visible;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(Visible, null), document.getElementById('app'));
+// console.log('BuildItVisible.js is running');
+
+// const app = {
+//     title: 'Visibility'
+// }
+
+// let visible = false;
+// const changeVisibility = () => {
+//     visible = !visible;
+//     renderApp();
+// }
+
+// const renderApp = () => {
+//     let template = (
+//         <div>
+//             <h1>{app.title}</h1>
+//             <button onClick={changeVisibility}>{visible?'Hide details':'Show details'}</button>
+//             {visible && <p>Here are the details</p>}
+//         </div>
+//     );
+//     ReactDOM.render(template,appRoot);    
+// }
 
 // const appRoot = document.getElementById('app');
 
-// let count = 0;
-// const addOne = () => {
-//     count++;
-//     renderCounterApp();
-// };
-// const minusOne = () => {    
-//     count--;
-//     renderCounterApp();
-// };
-// const reset = () => {    
-//     count = 0;
-//     renderCounterApp();
-// };
-
-// const renderCounterApp = () => {
-//     const template2 = (
-//         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={addOne}>+1</button>
-//             <button onClick={minusOne}>-1</button>
-//             <button onClick={reset}>reset</button>
-//         </div>
-//     );
-
-//     ReactDOM.render(template2, appRoot);    
-// };
-
-// renderCounterApp();
+// renderApp();
