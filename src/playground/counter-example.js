@@ -6,8 +6,26 @@ class Counter extends React.Component {
         this.minusOne = this.minusOne.bind(this);
         this.reset = this.reset.bind(this);
         this.state = {
-            count: props.counter
+            count: 0
         };
+    }
+
+    componentDidMount(){
+        try{        
+            const json = localStorage.getItem('counter');
+            const count = parseInt(JSON.parse(json));
+            
+            if(count && !isNaN(count)){
+                this.setState(() => ({ count }));
+            }
+        } catch (e) {
+            //Do nothing
+        }
+    }
+
+    componentDidUpdate(){
+        const json = JSON.stringify(this.state.count);
+        localStorage.setItem('counter', json);        
     }
 
     addOne() {
@@ -46,39 +64,8 @@ class Counter extends React.Component {
     }
 }
 
-Counter.defaultProps = {
-    counter : 0
-};
+// Counter.defaultProps = {
+//     counter : 0
+// };
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
-
-// const appRoot = document.getElementById('app');
-
-// let count = 0;
-// const addOne = () => {
-//     count++;
-//     renderCounterApp();
-// };
-// const minusOne = () => {    
-//     count--;
-//     renderCounterApp();
-// };
-// const reset = () => {    
-//     count = 0;
-//     renderCounterApp();
-// };
-
-// const renderCounterApp = () => {
-//     const template2 = (
-//         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={addOne}>+1</button>
-//             <button onClick={minusOne}>-1</button>
-//             <button onClick={reset}>reset</button>
-//         </div>
-//     );
-
-//     ReactDOM.render(template2, appRoot);    
-// };
-
-// renderCounterApp();
