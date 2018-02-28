@@ -7,6 +7,7 @@ const Option = (props) => (
             onClick={(e) => {
                 props.handleRemove(props.optionText)
             }}
+            className="buton button--link"
         >
             Remove
         </button>
