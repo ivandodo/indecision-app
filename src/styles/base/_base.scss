@@ -4,8 +4,6 @@ html {
 
 body {
     font-family: Helvetica, Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-}
-
-h1 {
+    font-size: $m-size;
+    background-color: $dark-blue;
 }
